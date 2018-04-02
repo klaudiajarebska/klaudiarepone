@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="miasta-db.js"></script>
+<script src="miasta.js"></script>
+<script>
+function akcja(){
+	var nazwa1 = document.querySelector("#m1").value
+	var miasto1 = Miasta.find( x => x.name == nazwa1 )
+	document.querySelector("#outm1").value = miasto1.gps.map( x => x.toFixed( 3 ) ).join(" ")
+
+	var nazwa2 = document.querySelector("#m2").value
+	var miasto2 = Miasta.find( x => x.name == nazwa2 )
+	document.querySelector("#outm2").value = miasto2.gps.map( x => x.toFixed( 3 ) ).join(" ") 
+	
+	document.querySelector("#odleglosc").value = ( town_dist( miasto1, miasto2 ) ).toFixed(1) + " km"
+
+}
+
+</script>
+</head>
+<body>
+
+<input id=m1 value="Warszawa">
+<input id=m2 value="Piaseczno">
+
+ <button onclick="akcja()">Podaj odległość</button>
+
+<p>
+Współrzędne 1: <output id="outm1" ></output>
+</p>
+<p>
+Współrzędne 2: <output id="outm2" ></output>
+</p>
+<p>
+Odległość: <output id="odleglosc"></output>
+</body>
+
+</html>
