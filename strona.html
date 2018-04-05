@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Moja</title>
+        <meta charset="UTF-8">
+        <script src = "ludzie.js"></script>
+        <script>
+        function start1(){
+            ludzie
+            .map(x => x.imie + " " + x.nazwisko + " " + x.rok)
+            .forEach( function(x){ 
+			elem = document.createElement("li")
+			elem.innerText = x 
+            document.querySelector("#lista").appendChild( elem )
+            
+		})
+        }
+        function start2(){
+            ludzie
+            .sort( (x,y) => x.nazwisko > y.nazwisko )
+            .map(x => x.imie + " " + x.nazwisko)
+            .forEach( function(x){ 
+			elem = document.createElement("li")
+			elem.innerText = x 
+            document.querySelector("#lista").appendChild( elem )
+        }) 
+        }
+        function start3(){
+            ludzie
+            .filter( x => x.nazwisko > "M" )
+            .map(x => x.imie + " " + x.nazwisko)
+            .forEach( function(x){ 
+			elem = document.createElement("li")
+			elem.innerText = x 
+            document.querySelector("#lista").appendChild( elem )
+        }) 
+        }
+        </script>
+    </head>
+    <body>
+<h1>Witaj, co chcesz zrobić?</h1>
+<div><button onclick="start1()">Zobacz bazę ludzi</button>
+<button onclick="start2()">Sortuj bazę ludzi</button>
+<button onclick="start3()">Filtruj bazę ludzi</button></div>
+<h3>Wyniki:</h3>
+<ul id="lista"></ul>
+
+
+    </body>
+</html>
